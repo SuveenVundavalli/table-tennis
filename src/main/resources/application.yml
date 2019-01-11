@@ -3,7 +3,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      ddl-auto: update
+      ddl-auto: validate
     properties:
       hibernate:
         format_sql: true
@@ -13,3 +13,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3356/ccp?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false
     username: ccp
     password: password
+
+server:
+  port: 8085
