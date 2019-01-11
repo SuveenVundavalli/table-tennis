@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: false
+        show_sql: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3356/ccp?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false
+    username: ccp
+    password: password
