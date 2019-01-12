@@ -1,7 +1,17 @@
 package com.clx.apps.tt.db.service;
 
-import org.springframework.stereotype.Service;
+import com.clx.apps.tt.db.model.Match;
 
-@Service
+import java.util.List;
+
 public interface MatchService {
+
+    boolean saveMatch(Match match);
+
+    Match findMatch(Integer id);
+
+    List<Match> findAllMatchs();
+
+    boolean delete(Integer id);
+    
 }

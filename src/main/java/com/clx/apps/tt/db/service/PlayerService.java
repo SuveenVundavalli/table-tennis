@@ -1,7 +1,17 @@
 package com.clx.apps.tt.db.service;
 
-import org.springframework.stereotype.Service;
+import com.clx.apps.tt.db.model.Player;
 
-@Service
+import java.util.List;
+
 public interface PlayerService {
+
+    boolean savePlayer(Player player);
+
+    Player findPlayer(Integer id);
+
+    List<Player> findAllPlayers();
+
+    boolean delete(Integer id);
+
 }
