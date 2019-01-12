@@ -18,8 +18,6 @@ public class Player {
 
     private String lastName;
 
-    private String office;
-
     @Generated(GenerationTime.INSERT)
     @Column(
             nullable = false,
@@ -52,7 +50,11 @@ public class Player {
     private Set<Match> losers;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "player")
-    private Set<Level> Levels;
+    private Set<Level> levels;
+
+    @ManyToOne
+    @JoinColumn(name = "branchId")
+    private Branch branch;
 
     public Integer getId() {
         return id;
@@ -76,14 +78,6 @@ public class Player {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getOffice() {
-        return office;
-    }
-
-    public void setOffice(String office) {
-        this.office = office;
     }
 
     public Date getCreatedAt() {
@@ -135,11 +129,19 @@ public class Player {
     }
 
     public Set<Level> getLevels() {
-        return Levels;
+        return levels;
     }
 
     public void setLevels(Set<Level> levels) {
-        Levels = levels;
+        this.levels = levels;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 
     @Override

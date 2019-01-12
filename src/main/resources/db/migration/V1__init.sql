@@ -1,13 +1,20 @@
+CREATE TABLE `branch`
+(
+  `id` int not null auto_increment,
+  `branch` varchar(255),
+  primary key (id)
+);
 
 CREATE TABLE `player`
 (
 	`id` int not null auto_increment,
 	`firstName` varchar(255),
 	`lastName` varchar(255),
-	`office` varchar(255),
+	`branchId` int,
 	`createdAt` datetime default current_timestamp,
   `updatedAt` datetime on update current_timestamp,
-	primary key (id)
+	primary key (id),
+	FOREIGN KEY (`branchId`) REFERENCES `branch` (`id`)
 );
 
 CREATE TABLE `match` 
