@@ -13,6 +13,13 @@ spring:
     url: jdbc:mysql://127.0.0.1:3356/ccp?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false
     username: ccp
     password: password
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp
+      suffix: .jsp
+  thymeleaf:
+    cache: false
 
 server:
   port: 8085
+
