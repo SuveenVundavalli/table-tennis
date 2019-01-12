@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "level")
+@Table(name = "playerLevel")
 public class Level {
 
   @Id

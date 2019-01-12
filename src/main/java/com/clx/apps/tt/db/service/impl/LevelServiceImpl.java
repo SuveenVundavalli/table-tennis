@@ -19,14 +19,13 @@ public class LevelServiceImpl implements LevelService {
   @Autowired private LevelRepository levelRepository;
 
   @Override
-  public boolean saveLevel(Level level) {
+  public Level saveLevel(Level level) {
     try {
-      levelRepository.save(level);
-      return true;
+      return levelRepository.save(level);
     } catch (Exception e) {
-      log.error("Error while saving level: %s", e);
+      log.error("Error while saving level: {}", e);
     }
-    return false;
+    return null;
   }
 
   @Override
@@ -37,7 +36,7 @@ public class LevelServiceImpl implements LevelService {
         return levelOptional.get();
       }
     } catch (Exception e) {
-      log.error("Error finding level with id %s: %s", id, e);
+      log.error("Error finding level with id {}: {}", id, e);
     }
     return null;
   }
@@ -53,7 +52,7 @@ public class LevelServiceImpl implements LevelService {
       levelRepository.delete(findLevel(id));
       return true;
     } catch (Exception e) {
-      log.error("Error while deleting level with id %s: %s", id, e);
+      log.error("Error while deleting level with id {}: {}", id, e);
     }
     return false;
   }

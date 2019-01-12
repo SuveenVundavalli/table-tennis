@@ -12,7 +12,7 @@
             <h2>Start Match</h2>
             <hr>
             <div class="container">
-                <form id="startMatch" method="post" th:action="@{/startMatch}" th:object="${match}">
+                <form id="startMatch" method="post" th:action="@{/createMatch}" th:object="${match}">
                     <div class="form-group">
                         <label for="playerOne">Player 1:</label>
                         <select class="form-control" id="playerOne" th:field="*{playerOne.id}">

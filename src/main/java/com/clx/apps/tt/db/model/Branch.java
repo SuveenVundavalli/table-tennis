@@ -14,7 +14,7 @@ public class Branch {
 
   private String branchName;
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "branch")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "branch")
   private Set<Player> players;
 
   public Integer getId() {

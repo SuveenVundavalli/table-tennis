@@ -19,14 +19,13 @@ public class PlayerServiceImpl implements PlayerService {
   @Autowired private PlayerRepository playerRepository;
 
   @Override
-  public boolean savePlayer(Player player) {
+  public Player savePlayer(Player player) {
     try {
-      playerRepository.save(player);
-      return true;
+      return playerRepository.save(player);
     } catch (Exception e) {
-      log.error("Error while saving player: %s", e);
+      log.error("Error while saving player: {}", e);
     }
-    return false;
+    return null;
   }
 
   @Override
@@ -37,7 +36,7 @@ public class PlayerServiceImpl implements PlayerService {
         return playerOptional.get();
       }
     } catch (Exception e) {
-      log.error("Error finding player with id %s: %s", id, e);
+      log.error("Error finding player with id {}: {}", id, e);
     }
     return null;
   }
@@ -53,7 +52,7 @@ public class PlayerServiceImpl implements PlayerService {
       playerRepository.delete(findPlayer(id));
       return true;
     } catch (Exception e) {
-      log.error("Error while deleting player with id %s: %s", id, e);
+      log.error("Error while deleting player with id {}: {}", id, e);
     }
     return false;
   }

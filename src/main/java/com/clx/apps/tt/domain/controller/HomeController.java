@@ -1,11 +1,14 @@
 package com.clx.apps.tt.domain.controller;
 
 import com.clx.apps.tt.db.model.Branch;
+import com.clx.apps.tt.db.model.Match;
 import com.clx.apps.tt.db.model.Player;
 import com.clx.apps.tt.db.service.BranchService;
 import com.clx.apps.tt.db.service.LevelService;
 import com.clx.apps.tt.db.service.MatchService;
 import com.clx.apps.tt.db.service.PlayerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,8 @@ import javax.validation.Valid;
 
 @Controller
 public class HomeController {
+
+  private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
   @Autowired private BranchService branchService;
 
@@ -69,8 +74,27 @@ public class HomeController {
     return "addPlayer";
   }
 
-  @GetMapping("/startMatch")
+  @GetMapping("/createMatch")
   public String startMatch(Model model) {
+
+    model.addAttribute("players", playerService.findAllPlayers());
+    model.addAttribute("match", new Match());
+
+    return "createMatch";
+  }
+
+  @PostMapping("/createMatch")
+  public String startMatch(@ModelAttribute Match match, Model model) {
+
+    match.setPlayerOne(playerService.findPlayer(match.getPlayerOne().getId()));
+    match.setPlayerTwo(playerService.findPlayer(match.getPlayerTwo().getId()));
+    match = matchService.saveMatch(match);
+
+    log.error("--> {}", match.getPlayerOne().getBranch());
+    log.error("--> {}", match.getPlayerTwo().getBranch());
+
+    model.addAttribute("playerOne", playerService.findPlayer(match.getPlayerOne().getId()));
+    model.addAttribute("currentMatch", match);
 
     return "startMatch";
   }

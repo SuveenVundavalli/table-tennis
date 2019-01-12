@@ -37,19 +37,19 @@ public class Player {
   @Temporal(TemporalType.TIMESTAMP)
   private Date updatedAt;
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "playerOne")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "playerOne")
   private Set<Match> playerOnes;
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "playerTwo")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "playerTwo")
   private Set<Match> playerTwos;
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "winner")
-  private Set<Match> winners;
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "winner")
+  private Set<Win> winners;
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "loser")
-  private Set<Match> losers;
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "loser")
+  private Set<Win> losers;
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "player")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "player")
   private Set<Level> levels;
 
   @ManyToOne
@@ -112,19 +112,19 @@ public class Player {
     this.playerTwos = playerTwos;
   }
 
-  public Set<Match> getWinners() {
+  public Set<Win> getWinners() {
     return winners;
   }
 
-  public void setWinners(Set<Match> winners) {
+  public void setWinners(Set<Win> winners) {
     this.winners = winners;
   }
 
-  public Set<Match> getLosers() {
+  public Set<Win> getLosers() {
     return losers;
   }
 
-  public void setLosers(Set<Match> losers) {
+  public void setLosers(Set<Win> losers) {
     this.losers = losers;
   }
 

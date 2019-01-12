@@ -17,25 +17,34 @@ CREATE TABLE `player`
 	FOREIGN KEY (`branchId`) REFERENCES `branch` (`id`)
 );
 
-CREATE TABLE `match` 
+CREATE TABLE `playerMatch`
 (
 	`id` int not null auto_increment,
 	`playerOneId` int,
 	`playerTwoId` int,
-	`winnerId` int,
-	`loserId` int,
-	`winnerScore` int,
-	`loserScore` int,
 	`createdAt` datetime default current_timestamp,
-  `updatedAt` datetime on update current_timestamp,
   primary key (id),
   FOREIGN KEY (`playerOneId`) REFERENCES `player` (`id`),
-  FOREIGN KEY (`playerTwoId`) REFERENCES `player` (`id`),
-  FOREIGN KEY (`winnerId`) REFERENCES `player` (`id`),
-  FOREIGN KEY (`loserId`) REFERENCES `player` (`id`)
+  FOREIGN KEY (`playerTwoId`) REFERENCES `player` (`id`)
 );
 
-CREATE TABLE `level` 
+CREATE TABLE `playerWin`
+(
+  `id` int not null auto_increment,
+  `matchId` int,
+  `winnerId` int,
+  `loserId` int,
+  `winnerScore` int,
+  `loserScore` int,
+  `createdAt` datetime default current_timestamp,
+  `updatedAt` datetime on update current_timestamp,
+  primary key (id),
+  FOREIGN KEY (`winnerId`) REFERENCES `player` (`id`),
+  FOREIGN KEY (`loserId`) REFERENCES `player` (`id`),
+  FOREIGN KEY (`matchId`) REFERENCES `playerMatch` (`id`)
+);
+
+CREATE TABLE `playerLevel`
 (
 	`id` int not null auto_increment,
 	`playerId` int,

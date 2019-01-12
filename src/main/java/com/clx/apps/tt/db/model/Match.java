@@ -8,12 +8,15 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "match")
+@Table(name = "playerMatch")
 public class Match {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+
+  @OneToOne(fetch = FetchType.LAZY, mappedBy = "match", cascade = CascadeType.ALL)
+  private Win win;
 
   @ManyToOne
   @JoinColumn(name = "playerOneId")
@@ -23,18 +26,6 @@ public class Match {
   @JoinColumn(name = "playerTwoId")
   private Player playerTwo;
 
-  @ManyToOne
-  @JoinColumn(name = "winnerId")
-  private Player winner;
-
-  @ManyToOne
-  @JoinColumn(name = "loserId")
-  private Player loser;
-
-  private Integer winnerScore;
-
-  private Integer loserScore;
-
   @Generated(GenerationTime.INSERT)
   @Column(
       nullable = false,
@@ -43,14 +34,6 @@ public class Match {
       columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP()")
   @Temporal(TemporalType.TIMESTAMP)
   private Date createdAt;
-
-  @Generated(GenerationTime.ALWAYS)
-  @Column(
-      insertable = false,
-      updatable = false,
-      columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP()")
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date updatedAt;
 
   public Integer getId() {
     return id;
@@ -76,38 +59,6 @@ public class Match {
     this.playerTwo = playerTwo;
   }
 
-  public Player getWinner() {
-    return winner;
-  }
-
-  public void setWinner(Player winner) {
-    this.winner = winner;
-  }
-
-  public Player getLoser() {
-    return loser;
-  }
-
-  public void setLoser(Player loser) {
-    this.loser = loser;
-  }
-
-  public Integer getWinnerScore() {
-    return winnerScore;
-  }
-
-  public void setWinnerScore(Integer winnerScore) {
-    this.winnerScore = winnerScore;
-  }
-
-  public Integer getLoserScore() {
-    return loserScore;
-  }
-
-  public void setLoserScore(Integer loserScore) {
-    this.loserScore = loserScore;
-  }
-
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -116,12 +67,12 @@ public class Match {
     this.createdAt = createdAt;
   }
 
-  public Date getUpdatedAt() {
-    return updatedAt;
+  public Win getWin() {
+    return win;
   }
 
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setWin(Win win) {
+    this.win = win;
   }
 
   @Override

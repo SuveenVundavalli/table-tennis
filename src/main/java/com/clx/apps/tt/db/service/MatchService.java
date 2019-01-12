@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MatchService {
 
-  boolean saveMatch(Match match);
+  Match saveMatch(Match match);
 
   Match findMatch(Integer id);
 

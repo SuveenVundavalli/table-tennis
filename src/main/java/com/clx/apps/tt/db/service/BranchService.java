@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BranchService {
 
-  boolean saveBranch(Branch branch);
+  Branch saveBranch(Branch branch);
 
   Branch findBranch(Integer id);
 

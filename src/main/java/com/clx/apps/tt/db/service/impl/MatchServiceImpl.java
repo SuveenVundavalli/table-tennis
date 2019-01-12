@@ -19,14 +19,15 @@ public class MatchServiceImpl implements MatchService {
   @Autowired private MatchRepository matchRepository;
 
   @Override
-  public boolean saveMatch(Match match) {
+  public Match saveMatch(Match match) {
     try {
-      matchRepository.save(match);
-      return true;
+      log.error("--> playerOne: {}", match.getPlayerOne());
+      log.error("--> playerTwo: {}", match.getPlayerTwo());
+      return matchRepository.save(match);
     } catch (Exception e) {
-      log.error("Error while saving match: %s", e);
+      log.error("Error while saving match: {}", e);
     }
-    return false;
+    return null;
   }
 
   @Override
@@ -37,7 +38,7 @@ public class MatchServiceImpl implements MatchService {
         return matchOptional.get();
       }
     } catch (Exception e) {
-      log.error("Error finding match with id %s: %s", id, e);
+      log.error("Error finding match with id {}: {}", id, e);
     }
     return null;
   }
@@ -53,7 +54,7 @@ public class MatchServiceImpl implements MatchService {
       matchRepository.delete(findMatch(id));
       return true;
     } catch (Exception e) {
-      log.error("Error while deleting match with id %s: %s", id, e);
+      log.error("Error while deleting match with id {}: {}", id, e);
     }
     return false;
   }

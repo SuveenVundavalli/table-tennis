@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LevelService {
 
-  boolean saveLevel(Level level);
+  Level saveLevel(Level level);
 
   Level findLevel(Integer id);
 

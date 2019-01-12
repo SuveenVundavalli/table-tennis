@@ -19,14 +19,13 @@ public class BranchServiceImpl implements BranchService {
   @Autowired private BranchRepository branchRepository;
 
   @Override
-  public boolean saveBranch(Branch branch) {
+  public Branch saveBranch(Branch branch) {
     try {
-      branchRepository.save(branch);
-      return true;
+      return branchRepository.save(branch);
     } catch (Exception e) {
-      log.error("Error while saving branch: %s", e);
+      log.error("Error while saving branch: {}", e);
     }
-    return false;
+    return null;
   }
 
   @Override
@@ -37,7 +36,7 @@ public class BranchServiceImpl implements BranchService {
         return branchOptional.get();
       }
     } catch (Exception e) {
-      log.error("Error finding branch with id %s: %s", id, e);
+      log.error("Error finding branch with id {}: {}", id, e);
     }
     return null;
   }
@@ -53,7 +52,7 @@ public class BranchServiceImpl implements BranchService {
       branchRepository.delete(findBranch(id));
       return true;
     } catch (Exception e) {
-      log.error("Error while deleting branch with id %s: %s", id, e);
+      log.error("Error while deleting branch with id {}: {}", id, e);
     }
     return false;
   }

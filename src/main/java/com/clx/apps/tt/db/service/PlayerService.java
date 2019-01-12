@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PlayerService {
 
-  boolean savePlayer(Player player);
+  Player savePlayer(Player player);
 
   Player findPlayer(Integer id);
 
