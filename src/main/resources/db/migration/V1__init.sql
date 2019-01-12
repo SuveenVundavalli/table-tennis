@@ -1,7 +1,7 @@
 CREATE TABLE `branch`
 (
   `id` int not null auto_increment,
-  `branch` varchar(255),
+  `branchName` varchar(255),
   primary key (id)
 );
 

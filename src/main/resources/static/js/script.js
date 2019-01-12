@@ -3,3 +3,10 @@ $(document).on('click', '.navbar-collapse.in', function (e) {
         $(this).collapse('hide');
     }
 });
+
+$('#addBranchBth').submit(function (e) {
+    e.preventDefault();
+    // Coding
+    $('#addBranch').modal('toggle'); //or  $('#IDModal').modal('hide');
+    return false;
+});

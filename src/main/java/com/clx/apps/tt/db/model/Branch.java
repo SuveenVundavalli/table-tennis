@@ -12,6 +12,8 @@ public class Branch {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+  private String branchName;
+
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "branch")
   private Set<Player> players;
 
@@ -29,6 +31,14 @@ public class Branch {
 
   public void setPlayers(Set<Player> players) {
     this.players = players;
+  }
+
+  public String getBranchName() {
+    return branchName;
+  }
+
+  public void setBranchName(String branchName) {
+    this.branchName = branchName;
   }
 
   @Override

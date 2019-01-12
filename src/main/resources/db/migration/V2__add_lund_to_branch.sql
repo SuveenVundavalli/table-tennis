@@ -1,0 +1,1 @@
+INSERT INTO `branch` values (1, 'Lund');

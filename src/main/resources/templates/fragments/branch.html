@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="form-group" th:fragment="branch-list">
+    <label for="branch">Branch:</label>
+    <select class="form-control" id="branch" th:field="*{branch.id}">
+        <option th:each="branch : ${branches}" th:text="${branch.branchName}" th:value="${branch.id}"></option>
+    </select>
+</div>
+
+<div class="modal fade" id="addBranch" role="dialog" th:fragment="add-branch">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                <h4 class="modal-title">Add Branch</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addBranchForm" method="post" th:action="@{/addBranch}" th:object="${branch}">
+                    <div class="form-group">
+                        <label for="branchName">Branch name:</label>
+                        <input class="form-control" id="branchName" th:field="*{branchName}" type="text">
+                    </div>
+                    <button class="btn btn-success" id="#addBranchBth" type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
