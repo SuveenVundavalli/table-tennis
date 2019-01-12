@@ -21,8 +21,6 @@ public class MatchServiceImpl implements MatchService {
   @Override
   public Match saveMatch(Match match) {
     try {
-      log.error("--> playerOne: {}", match.getPlayerOne());
-      log.error("--> playerTwo: {}", match.getPlayerTwo());
       return matchRepository.save(match);
     } catch (Exception e) {
       log.error("Error while saving match: {}", e);

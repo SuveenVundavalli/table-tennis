@@ -9,30 +9,24 @@
 
     <div class="starter-template">
         <div class="container">
-            <h2>Start Match</h2>
-            <hr>
+            <h2>Match in progress</h2>
+            <h4><span th:text="${playerOne.firstName}">player 1</span> vs <span th:text="${playerTwo.firstName}"></span>
+            </h4>
+            <hr/>
             <div class="container">
-                <form id="startMatch" method="post" th:action="@{/startMatch}" th:object="${match}">
-                    <div class="form-group">
-                        <label for="playerOne">Player 1:</label>
-                        <select class="form-control" id="playerOne" th:field="*{playerOne.id}">
-                            <option th:each="player : ${players}"
-                                    th:text="${player.firstName} + ' ' + ${player.lastName}"
-                                    th:value="${player.id}"></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="playerTwo">Player 1:</label>
-                        <select class="form-control" id="playerTwo" th:field="*{playerTwo.id}">
-                            <option th:each="player : ${players}"
-                                    th:text="${player.firstName} + ' ' + ${player.lastName}"
-                                    th:value="${player.id}"></option>
-                        </select>
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 th:text="${playerOne.firstName}">Player 1</h5>
+                        <hr/>
+                        <div class="player-score" th:text="${currentMatch.playerOneScore}">0</div>
                     </div>
-                    <button class="btn btn-success" type="submit">Start Match</button>
-                    </button>
-                </form>
+                    <div class="col-sm-6">
+                        <h5 th:text="${playerTwo.firstName}">Player 2</h5>
+                        <hr/>
+                        <div class="player-score" th:text="${currentMatch.playerTwoScore}">0</div>
+                    </div>
+                </div>
 
                 <div th:replace="fragments/messages :: message"></div>
             </div>

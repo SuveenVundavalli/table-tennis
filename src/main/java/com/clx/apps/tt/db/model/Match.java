@@ -1,5 +1,6 @@
 package com.clx.apps.tt.db.model;
 
+import com.clx.apps.tt.util.converter.MatchStatusConverter;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
@@ -25,6 +26,14 @@ public class Match {
   @ManyToOne
   @JoinColumn(name = "playerTwoId")
   private Player playerTwo;
+
+  private Integer playerOneScore;
+
+  private Integer playerTwoScore;
+
+  @Column(columnDefinition = "enum")
+  @Convert(converter = MatchStatusConverter.class)
+  private Status status;
 
   @Generated(GenerationTime.INSERT)
   @Column(
@@ -59,6 +68,22 @@ public class Match {
     this.playerTwo = playerTwo;
   }
 
+  public Integer getPlayerOneScore() {
+    return playerOneScore;
+  }
+
+  public void setPlayerOneScore(Integer playerOneScore) {
+    this.playerOneScore = playerOneScore;
+  }
+
+  public Integer getPlayerTwoScore() {
+    return playerTwoScore;
+  }
+
+  public void setPlayerTwoScore(Integer playerTwoScore) {
+    this.playerTwoScore = playerTwoScore;
+  }
+
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -73,6 +98,14 @@ public class Match {
 
   public void setWin(Win win) {
     this.win = win;
+  }
+
+  public Status getStatus() {
+    return status;
+  }
+
+  public void setStatus(Status status) {
+    this.status = status;
   }
 
   @Override

@@ -3,6 +3,7 @@ package com.clx.apps.tt.domain.controller;
 import com.clx.apps.tt.db.model.Branch;
 import com.clx.apps.tt.db.model.Match;
 import com.clx.apps.tt.db.model.Player;
+import com.clx.apps.tt.db.model.Status;
 import com.clx.apps.tt.db.service.BranchService;
 import com.clx.apps.tt.db.service.LevelService;
 import com.clx.apps.tt.db.service.MatchService;
@@ -75,7 +76,7 @@ public class HomeController {
   }
 
   @GetMapping("/createMatch")
-  public String startMatch(Model model) {
+  public String createMatch(Model model) {
 
     model.addAttribute("players", playerService.findAllPlayers());
     model.addAttribute("match", new Match());
@@ -84,16 +85,15 @@ public class HomeController {
   }
 
   @PostMapping("/createMatch")
-  public String startMatch(@ModelAttribute Match match, Model model) {
+  public String createMatch(@ModelAttribute Match match, Model model) {
 
-    match.setPlayerOne(playerService.findPlayer(match.getPlayerOne().getId()));
-    match.setPlayerTwo(playerService.findPlayer(match.getPlayerTwo().getId()));
+    match.setPlayerOneScore(0);
+    match.setPlayerTwoScore(0);
+    match.setStatus(Status.PENDING);
     match = matchService.saveMatch(match);
 
-    log.error("--> {}", match.getPlayerOne().getBranch());
-    log.error("--> {}", match.getPlayerTwo().getBranch());
-
     model.addAttribute("playerOne", playerService.findPlayer(match.getPlayerOne().getId()));
+    model.addAttribute("playerTwo", playerService.findPlayer(match.getPlayerTwo().getId()));
     model.addAttribute("currentMatch", match);
 
     return "startMatch";
