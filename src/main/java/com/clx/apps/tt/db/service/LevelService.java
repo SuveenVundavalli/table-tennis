@@ -6,12 +6,11 @@ import java.util.List;
 
 public interface LevelService {
 
-    boolean saveLevel(Level level);
+  boolean saveLevel(Level level);
 
-    Level findLevel(Integer id);
+  Level findLevel(Integer id);
 
-    List<Level> findAllLevels();
+  List<Level> findAllLevels();
 
-    boolean delete(Integer id);
-
+  boolean delete(Integer id);
 }

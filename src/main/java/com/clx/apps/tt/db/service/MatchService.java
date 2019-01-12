@@ -6,12 +6,11 @@ import java.util.List;
 
 public interface MatchService {
 
-    boolean saveMatch(Match match);
+  boolean saveMatch(Match match);
 
-    Match findMatch(Integer id);
+  Match findMatch(Integer id);
 
-    List<Match> findAllMatchs();
+  List<Match> findAllMatchs();
 
-    boolean delete(Integer id);
-    
+  boolean delete(Integer id);
 }

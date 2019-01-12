@@ -9,51 +9,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
-    private static final Logger log = LoggerFactory.getLogger( PlayerServiceImpl.class );
+  private static final Logger log = LoggerFactory.getLogger(PlayerServiceImpl.class);
 
-    @Autowired
-    private PlayerRepository playerRepository;
+  @Autowired private PlayerRepository playerRepository;
 
-
-    @Override
-    public boolean savePlayer(Player player) {
-        try {
-            playerRepository.save(player);
-            return true;
-        } catch (Exception e) {
-            log.error("Error while saving player: %s", e);
-        }
-        return false;
+  @Override
+  public boolean savePlayer(Player player) {
+    try {
+      playerRepository.save(player);
+      return true;
+    } catch (Exception e) {
+      log.error("Error while saving player: %s", e);
     }
+    return false;
+  }
 
-    @Override
-    public Player findPlayer(Integer id) {
-        try {
-            return playerRepository.findById(id).get();
-        } catch (Exception e) {
-            log.error("Error finding player with id %s: %s", id, e);
-        }
-        return null;
+  @Override
+  public Player findPlayer(Integer id) {
+    try {
+      Optional<Player> playerOptional = playerRepository.findById(id);
+      if (playerOptional.isPresent()) {
+        return playerOptional.get();
+      }
+    } catch (Exception e) {
+      log.error("Error finding player with id %s: %s", id, e);
     }
+    return null;
+  }
 
-    @Override
-    public List<Player> findAllPlayers() {
-        return (List<Player>) playerRepository.findAll();
+  @Override
+  public List<Player> findAllPlayers() {
+    return (List<Player>) playerRepository.findAll();
+  }
+
+  @Override
+  public boolean delete(Integer id) {
+    try {
+      playerRepository.delete(findPlayer(id));
+      return true;
+    } catch (Exception e) {
+      log.error("Error while deleting player with id %s: %s", id, e);
     }
-
-    @Override
-    public boolean delete(Integer id) {
-        try {
-            playerRepository.delete(findPlayer(id));
-            return true;
-        } catch (Exception e) {
-            log.error("Error while deleting player with id %s: %s", id, e);
-        }
-        return false;
-    }
-
+    return false;
+  }
 }

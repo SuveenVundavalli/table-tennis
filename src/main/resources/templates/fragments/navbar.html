@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<nav th:fragment="common-navbar" class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="common-navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" th:href="@{/}"><img class="img img-responsive"
-                                                        th:attr="src=@{'/images/scoreboard.png'}"
-                                                        style="max-height: 50px; margin-top: -15px;" alt="logo"/></a>
+            <a class="navbar-brand" th:href="@{/}"><img alt="logo"
+                                                        class="img img-responsive"
+                                                        style="max-height: 50px; margin-top: -15px;" th:attr="src=@{'/images/scoreboard.png'}"/></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">

@@ -7,33 +7,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("message", "Hello world!");
-        return "index";
-    }
+  @GetMapping("/")
+  public String home(Model model) {
+    model.addAttribute("message", "Hello world!");
+    return "index";
+  }
 
-    @GetMapping("/addPlayer")
-    public String addPlayer(Model model) {
+  @GetMapping("/addPlayer")
+  public String addPlayer(Model model) {
 
-        return "addPlayer";
-    }
+    return "addPlayer";
+  }
 
-    @GetMapping("/startMatch")
-    public String startMatch(Model model) {
+  @GetMapping("/startMatch")
+  public String startMatch(Model model) {
 
-        return "startMatch";
-    }
+    return "startMatch";
+  }
 
-    @GetMapping("/history")
-    public String history(Model model) {
+  @GetMapping("/history")
+  public String history(Model model) {
 
-        return "history";
-    }
+    return "history";
+  }
 
-    @GetMapping("/graphs")
-    public String graphs(Model model) {
+  @GetMapping("/graphs")
+  public String graphs(Model model) {
 
-        return "graphs";
-    }
+    return "graphs";
+  }
 }

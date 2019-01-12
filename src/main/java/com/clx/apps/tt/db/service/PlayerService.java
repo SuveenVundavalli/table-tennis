@@ -6,12 +6,11 @@ import java.util.List;
 
 public interface PlayerService {
 
-    boolean savePlayer(Player player);
+  boolean savePlayer(Player player);
 
-    Player findPlayer(Integer id);
+  Player findPlayer(Integer id);
 
-    List<Player> findAllPlayers();
+  List<Player> findAllPlayers();
 
-    boolean delete(Integer id);
-
+  boolean delete(Integer id);
 }

@@ -9,10 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class TtApplicationTests {
 
-	@Test
-	public void contextLoads() {
-		// Test cases will be added later
-	}
-
+  @Test
+  public void contextLoads() {
+    // Test cases will be added later
+  }
 }
-
