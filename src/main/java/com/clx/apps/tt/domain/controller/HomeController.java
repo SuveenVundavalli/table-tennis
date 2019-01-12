@@ -12,4 +12,28 @@ public class HomeController {
         model.addAttribute("message", "Hello world!");
         return "index";
     }
+
+    @GetMapping("/addPlayer")
+    public String addPlayer(Model model) {
+
+        return "addPlayer";
+    }
+
+    @GetMapping("/startMatch")
+    public String startMatch(Model model) {
+
+        return "startMatch";
+    }
+
+    @GetMapping("/history")
+    public String history(Model model) {
+
+        return "history";
+    }
+
+    @GetMapping("/graphs")
+    public String graphs(Model model) {
+
+        return "graphs";
+    }
 }

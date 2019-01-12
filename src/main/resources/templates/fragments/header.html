@@ -2,11 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="common-header">
 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
     <title>Score board</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.css}" media="screen">
-    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.css}" media="screen" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" media="screen" />
 
 </head>
 <div th:fragment="before-body-scripts">
@@ -15,5 +19,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script th:src="@{/webjars/jquery/2.2.4/jquery.js}"></script>
     <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/fa.js}"></script>
 </div>
 </html>
